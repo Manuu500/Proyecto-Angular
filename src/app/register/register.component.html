@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+<div class="container mt-5">
+  <div class="col">
+    <div class="row"></div>
+    <div class="row align-items-center d-flex justify-content-center">
+      <mat-card>
+        <mat-card-content class="text-center">
+          <h2>REGISTRO DE USUARIOS</h2>
+        </mat-card-content>
+        <hr>
+        <div class="col-sm-12">
+          <div class="row align-items-center">
+            <label class="col-sm-3 text-center">Nombre:</label>
+            <mat-form-field class="col-sm-9">
+              <input matInput class="form-control">
+            </mat-form-field>
+          </div>
+          <div class="row align-items-center">
+            <label class="col-sm-3 text-center">Apellidos:</label>
+            <mat-form-field class="col-sm-9">
+              <input matInput class="form-control">
+            </mat-form-field>
+          </div>
+          <div class="row align-items-center">
+            <label class="col-sm-3 text-center">Email:</label>
+            <mat-form-field class="col-sm-9">
+              <input matInput class="form-control">
+            </mat-form-field>
+          </div>
+          <div class="row align-items-center">
+            <label class="col-sm-3 text-center">Contraseña:</label>
+            <mat-form-field class="col-sm-9">
+              <input matInput class="form-control">
+            </mat-form-field>
+          </div>
+          <div class="row align-items-center d-flex justify-content-center">
+            <button mat-raised-button color="accent" class="m-3">Registrarse</button>
+            <button (click)="index()" mat-raised-button class="m-3">Volver</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="row"></div>
+  </div>
+
+</div>
+
