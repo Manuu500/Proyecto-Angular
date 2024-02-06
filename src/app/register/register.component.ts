@@ -17,6 +17,6 @@ export class RegisterComponent {
 
 
   index(){
-    this.router.navigate(["index"]);
+    this.router.navigate([""]);
   }
 }

@@ -18,11 +18,13 @@ import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { IndexComponent } from './index/index.component';
+import { ListComponent } from './list/list.component';
 
 
 const appRoutes:Routes=[
   {path:'register',component:RegisterComponent},
-  {path:'index',component:IndexComponent},
+  {path:'',component:IndexComponent},
+  {path:'list',component:ListComponent},
 
 ]
 
@@ -35,6 +37,7 @@ const appRoutes:Routes=[
     FooterComponent,
     RegisterComponent,
     IndexComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,

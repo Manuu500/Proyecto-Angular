@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class IndexComponent {
 
+  private router: Router;
+
+  constructor(protected routerp:Router) {
+    this.router=routerp;
+  }
+
+  tiposChocobollos(){
+    this.router.navigate(['list']);
+  }
 }
