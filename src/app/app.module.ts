@@ -19,12 +19,14 @@ import { RegisterComponent } from './register/register.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { IndexComponent } from './index/index.component';
 import { ListComponent } from './list/list.component';
+import { LoginComponent } from './login/login.component';
 
 
 const appRoutes:Routes=[
   {path:'register',component:RegisterComponent},
   {path:'',component:IndexComponent},
   {path:'list',component:ListComponent},
+  {path:'login',component:LoginComponent},
 
 ]
 
@@ -38,6 +40,7 @@ const appRoutes:Routes=[
     RegisterComponent,
     IndexComponent,
     ListComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
