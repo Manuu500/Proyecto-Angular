@@ -20,6 +20,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { IndexComponent } from './index/index.component';
 import { ListComponent } from './list/list.component';
 import { LoginComponent } from './login/login.component';
+import { AddComponent } from './add/add.component';
 
 
 const appRoutes:Routes=[
@@ -27,6 +28,7 @@ const appRoutes:Routes=[
   {path:'',component:IndexComponent},
   {path:'list',component:ListComponent},
   {path:'login',component:LoginComponent},
+  {path:'add',component:AddComponent},
 
 ]
 
@@ -41,6 +43,7 @@ const appRoutes:Routes=[
     IndexComponent,
     ListComponent,
     LoginComponent,
+    AddComponent,
   ],
   imports: [
     BrowserModule,

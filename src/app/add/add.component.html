@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 mt-5">
+      <mat-card>
+        <mat-card-header>
+          <span class="d-flex justify-content-center tittle-text mt-3">Introduce tu chocobollo</span>
+        </mat-card-header>
+        <div class="row align-items-center mt-5">
+          <label class="col-sm-5 text-center">Nombre del Chocobollo:</label>
+          <mat-form-field class="col-sm-7">
+            <input matInput class="form-control">
+          </mat-form-field>
+        </div>
+        <div class="row align-items-center">
+          <label class="col-sm-5 text-center">Tipo del Chocobollo:</label>
+          <mat-form-field class="col-sm-7">
+            <input matInput class="form-control">
+          </mat-form-field>
+        </div>
+
+        <mat-card-content>
+          <button mat-raised-button color="accent" class="m-3">Añadir chocobollo</button>
+          <button (click)="volver()" mat-raised-button class="btn-sm m-2">Volver</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>

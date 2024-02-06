@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-add',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.css']
 })
-export class ListComponent {
+export class AddComponent {
 
   private router: Router;
 
@@ -18,7 +18,4 @@ export class ListComponent {
     this.router.navigate(['']);
   }
 
-  anadir(){
-    this.router.navigate(['add']);
-  }
 }
