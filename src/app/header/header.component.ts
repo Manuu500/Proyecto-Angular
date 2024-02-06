@@ -19,10 +19,6 @@ private router: Router;
       this.router.navigate(['register']);
     }
 
-    layout(){
-      this.router.navigate(['layout']);
-    }
-
     login(){
       this.router.navigate(['login']);
     }

@@ -56,4 +56,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-style: normal;
 }
 
+.align-text{
+  text-align: center;
+}
+
+.align-buttons{
+  align-self: center;
+  display: flex;
+  justify-content: center;
+}
+
+.table-tittle{
+  font-size: 25px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.table-text{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
 

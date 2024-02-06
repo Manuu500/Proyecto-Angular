@@ -1,1 +1,58 @@
-<p>list works!</p>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="row mt-5">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <div class="d-flex justify-content-center"> <!-- Centra horizontalmente la tabla -->
+        <table class="w-100" style="border-collapse: collapse; background-color: rgb(177, 98, 41);" border="2px">
+          <tr>
+            <td class="p-3 text-center table-tittle" style="min-width: 264px;">Nombre</td> <!-- Establece un ancho mínimo para cada celda -->
+            <td class="p-3 text-center table-tittle" style="min-width: 264px;">Tipo</td>
+            <td colspan="2" class="text-center table-tittle">Operaciones</td>
+          </tr>
+          <tr>
+            <td class="align-text table-text" style="min-width: 200px;">Engrasador</td>
+            <td class="align-text table-text" style="min-width: 264px;">Chocolate</td>
+            <td style="min-width: 264px;">
+              <div class="align-buttons">
+                <button mat-raised-button class="btn-sm m-2">Editar</button>
+              </div>
+            </td>
+            <td style="min-width: 264px;">
+              <div class="align-buttons">
+                <button mat-raised-button class="btn-sm m-2" style="background-color: red;">Borrar</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="align-text table-text" style="min-width: 264px;">Federico II</td>
+            <td class="align-text table-text" style="min-width: 264px;">Fresa</td>
+            <td style="min-width: 264px;">
+              <div class="align-buttons">
+                <button mat-raised-button class="btn-sm m-2">Editar</button>
+              </div>
+            </td>
+            <td style="min-width: 300px;">
+              <div class="align-buttons">
+                <button mat-raised-button class="btn-sm m-2 mat-error" style="background-color: red;">Borrar</button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm-4 align-self-start">
+      <button (click)="volver()" mat-raised-button color="accent" class="btn-sm m-2">Volver</button>
+      <button mat-raised-button color="accent" class="btn-sm m-2">Añadir chocobollo</button>
+    </div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>
+
