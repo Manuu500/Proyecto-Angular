@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.css']
 })
-export class ListComponent {
+export class EditComponent {
 
   private router: Router;
 
@@ -16,13 +17,5 @@ export class ListComponent {
 
   volver(){
     this.router.navigate(['']);
-  }
-
-  anadir(){
-    this.router.navigate(['add']);
-  }
-
-  editar(){
-    this.router.navigate(['edit']);
   }
 }

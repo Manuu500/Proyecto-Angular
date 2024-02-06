@@ -21,6 +21,7 @@ import { IndexComponent } from './index/index.component';
 import { ListComponent } from './list/list.component';
 import { LoginComponent } from './login/login.component';
 import { AddComponent } from './add/add.component';
+import { EditComponent } from './edit/edit.component';
 
 
 const appRoutes:Routes=[
@@ -29,6 +30,7 @@ const appRoutes:Routes=[
   {path:'list',component:ListComponent},
   {path:'login',component:LoginComponent},
   {path:'add',component:AddComponent},
+  {path:'edit',component:EditComponent},
 
 ]
 
@@ -44,6 +46,7 @@ const appRoutes:Routes=[
     ListComponent,
     LoginComponent,
     AddComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
