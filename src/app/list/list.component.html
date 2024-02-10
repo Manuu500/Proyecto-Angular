@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
+
 <div class="container d-flex justify-content-center align-items-center">
   <div class="row mt-5">
     <div class="col-sm-2"></div>
@@ -11,9 +12,9 @@
             <td class="p-3 text-center table-tittle" style="min-width: 264px;">Tipo</td>
             <td colspan="2" class="text-center table-tittle">Operaciones</td>
           </tr>
-          <tr>
-            <td class="align-text table-text" style="min-width: 200px;">Engrasador</td>
-            <td class="align-text table-text" style="min-width: 264px;">Chocolate</td>
+          <tr *ngFor="let bollo of chocobollo">
+            <td class="align-text table-text" style="min-width: 200px;">{{bollo.nombre}}</td>
+            <td class="align-text table-text" style="min-width: 264px;">{{bollo.tipo}}</td>
             <td style="min-width: 264px;">
               <div class="align-buttons">
                 <button (click)="editar()" mat-raised-button class="btn-sm m-2">Editar</button>
@@ -22,20 +23,6 @@
             <td style="min-width: 264px;">
               <div class="align-buttons">
                 <button mat-raised-button class="btn-sm m-2" style="background-color: red;">Borrar</button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="align-text table-text" style="min-width: 264px;">Federico II</td>
-            <td class="align-text table-text" style="min-width: 264px;">Fresa</td>
-            <td style="min-width: 264px;">
-              <div class="align-buttons">
-                <button (click)="editar()" mat-raised-button class="btn-sm m-2">Editar</button>
-              </div>
-            </td>
-            <td style="min-width: 300px;">
-              <div class="align-buttons">
-                <button mat-raised-button class="btn-sm m-2 mat-error" style="background-color: red;">Borrar</button>
               </div>
             </td>
           </tr>

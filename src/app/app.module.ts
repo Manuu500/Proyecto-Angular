@@ -22,6 +22,7 @@ import { ListComponent } from './list/list.component';
 import { LoginComponent } from './login/login.component';
 import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const appRoutes:Routes=[
@@ -59,6 +60,7 @@ const appRoutes:Routes=[
     MatFormFieldModule,
     RouterModule,
     RouterModule.forRoot(appRoutes),
+    HttpClientModule
 
   ],
 
