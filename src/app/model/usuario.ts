@@ -1,5 +1,6 @@
 export interface Usuario {
-  id_bollo: BigInt;
+  id: number;
+  id_bollo: number;
   nombre: string;
   apellido: string;
   email: string;

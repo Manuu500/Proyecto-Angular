@@ -5,6 +5,7 @@
   <div class="row mt-5">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
+      <form method="POST">
       <div class="d-flex justify-content-center"> <!-- Centra horizontalmente la tabla -->
         <table class="w-100" style="border-collapse: collapse; background-color: rgb(177, 98, 41);" border="2px">
           <tr>
@@ -17,17 +18,18 @@
             <td class="align-text table-text" style="min-width: 264px;">{{bollo.tipo}}</td>
             <td style="min-width: 264px;">
               <div class="align-buttons">
-                <button (click)="editar()" mat-raised-button class="btn-sm m-2">Editar</button>
+                <button (click)="editar(bollo.id, bollo.nombre, bollo.tipo)" mat-raised-button class="btn-sm m-2">Editar</button>
               </div>
             </td>
             <td style="min-width: 264px;">
               <div class="align-buttons">
-                <button mat-raised-button class="btn-sm m-2" style="background-color: red;">Borrar</button>
+                <button (click)="borrar(bollo.id)" mat-raised-button class="btn-sm m-2" style="background-color: red;">Borrar</button>
               </div>
             </td>
           </tr>
         </table>
       </div>
+    </form>
     </div>
     <div class="col-sm-2"></div>
   </div>

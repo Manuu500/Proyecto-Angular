@@ -5,7 +5,9 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { RouterModule, Routes } from '@angular/router';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -31,7 +33,7 @@ const appRoutes:Routes=[
   {path:'list',component:ListComponent},
   {path:'login',component:LoginComponent},
   {path:'add',component:AddComponent},
-  {path:'edit',component:EditComponent},
+  {path:'edit/:id/:nombre/:tipo', component:EditComponent},
 
 ]
 
@@ -60,7 +62,10 @@ const appRoutes:Routes=[
     MatFormFieldModule,
     RouterModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatInputModule
 
   ],
 
