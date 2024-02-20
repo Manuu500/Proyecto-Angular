@@ -18,6 +18,8 @@ import { MatInput } from '@angular/material/input';
 export class EditComponent implements OnInit {
   chocobolloForm: FormGroup;
   id!: number;
+  id_ingre!: number;
+  id_usu!: number;
 
   constructor(
     private updatebollo: AppServiceService,
@@ -51,6 +53,8 @@ export class EditComponent implements OnInit {
     if (this.chocobolloForm.valid) {
       const chocobolloData: Chocobollo = {
         id: this.id,
+        id_ingre: this.id_ingre,
+        id_usu: this.id_usu,
         nombre: this.chocobolloForm.value.nombre,
         tipo: this.chocobolloForm.value.tipo,
       };
@@ -62,6 +66,10 @@ export class EditComponent implements OnInit {
     } else {
       console.log('Form is not valid');
     }
+  }
+
+  add(){
+
   }
 
   ngOnInit(): void {}

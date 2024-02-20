@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,10 +10,13 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   private router: Router;
+  username: string = "";
+  password: string = "";
 
 
-  constructor(protected routerp:Router) {
+  constructor(private routerp:Router, private formBuilder:FormBuilder) {
     this.router=routerp;
+
   }
 
   volver(){
@@ -20,6 +24,10 @@ export class LoginComponent {
   }
 
   login(){
-
+    if(this.username === "" || this.password === "" ){
+      console.log("Hay algún campo vacío");
+    } else {
+      var usuarioLogueado: LoginComponent;
+    }
   }
 }

@@ -5,6 +5,7 @@
   <div class="col">
     <div class="row"></div>
     <div class="row align-items-center d-flex justify-content-center">
+      <form class="formularioLogin" (ngSubmit)="login()" >
       <mat-card>
         <mat-card-content class="text-center">
           <h2>LOGIN DE USUARIOS</h2>
@@ -14,21 +15,22 @@
           <div class="row align-items-center">
             <label class="col-sm-3 text-center">Email:</label>
             <mat-form-field class="col-sm-9">
-              <input matInput class="form-control">
+              <input matInput class="form-control"  name="nombre" placeholder="Pon aquí tu nombre" required>
             </mat-form-field>
           </div>
           <div class="row align-items-center">
             <label class="col-sm-3 text-center">Contraseña:</label>
             <mat-form-field class="col-sm-9">
-              <input matInput class="form-control">
+              <input matInput class="form-control" name="clave" placeholder="Pon aquí tu contraseña" required>
             </mat-form-field>
           </div>
           <div class="row align-items-center d-flex justify-content-center">
-            <button mat-raised-button color="accent" class="m-3">Iniciar sesion</button>
+            <button (click)="login()" mat-raised-button color="accent" class="m-3">Iniciar sesion</button>
             <button (click)="volver()" mat-raised-button class="m-3">Volver</button>
           </div>
         </div>
       </mat-card>
+    </form>
     </div>
     <div class="row"></div>
   </div>
