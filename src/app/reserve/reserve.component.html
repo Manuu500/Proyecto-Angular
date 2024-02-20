@@ -8,24 +8,30 @@
       <form class="formularioLogin" >
       <mat-card>
         <mat-card-content class="text-center">
-          <h2>LOGIN DE USUARIOS</h2>
+          <h2>RESERVA TU BOLLO!</h2>
         </mat-card-content>
         <hr>
         <div class="col-sm-12">
           <div class="row align-items-center">
-            <label class="col-sm-3 text-center">Email:</label>
+            <label class="col-sm-3 text-center">Nombre del bollo:</label>
             <mat-form-field class="col-sm-9">
               <input matInput class="form-control"  name="nombre" placeholder="Pon aquí tu nombre" required>
             </mat-form-field>
           </div>
           <div class="row align-items-center">
-            <label class="col-sm-3 text-center">Contraseña:</label>
+            <label class="col-sm-3 text-center">Tipo del bollo:</label>
             <mat-form-field class="col-sm-9">
               <input matInput class="form-control" name="clave" placeholder="Pon aquí tu contraseña" required>
             </mat-form-field>
           </div>
+          <div class="row align-items-center">
+            <label class="col-sm-3 text-center">Ingredientes:</label>
+            <div *ngFor="let checkbox of checkboxOptions">
+              <mat-checkbox  name="{{checkbox.name}}">{{ checkbox.label }}</mat-checkbox>
+            </div>
+          </div>
           <div class="row align-items-center d-flex justify-content-center">
-            <button  mat-raised-button color="accent" class="m-3">Iniciar sesion</button>
+            <button  mat-raised-button color="accent" class="m-3">Reservar bollo</button>
             <button (click)="volver()" mat-raised-button class="m-3">Volver</button>
           </div>
         </div>

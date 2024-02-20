@@ -17,4 +17,8 @@ export class IndexComponent {
   tiposChocobollos(){
     this.router.navigate(['list']);
   }
+
+  reservaChocobollo(){
+    this.router.navigate(['reserve']);
+  }
 }

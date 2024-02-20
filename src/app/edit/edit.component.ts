@@ -45,10 +45,12 @@ export class EditComponent implements OnInit {
     });
   }
 
+  //This comand make the program go back to the main page
   volver() {
     this.router.navigate(['']);
   }
 
+  //This comand make the program update the selected chocobollo when the data is changed
   actualizar() {
     if (this.chocobolloForm.valid) {
       const chocobolloData: Chocobollo = {

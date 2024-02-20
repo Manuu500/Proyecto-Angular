@@ -8,6 +8,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
@@ -25,6 +27,8 @@ import { LoginComponent } from './login/login.component';
 import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalConfirmacionComponent } from './modalconfirmacion/modalconfirmacion.component';
+import { ReserveComponent } from './reserve/reserve.component';
 
 
 const appRoutes:Routes=[
@@ -34,6 +38,7 @@ const appRoutes:Routes=[
   {path:'login',component:LoginComponent},
   {path:'add',component:AddComponent},
   {path:'edit/:id/:nombre/:tipo', component:EditComponent},
+  {path:'reserve',component:ReserveComponent}
 
 ]
 
@@ -50,6 +55,8 @@ const appRoutes:Routes=[
     LoginComponent,
     AddComponent,
     EditComponent,
+    ModalConfirmacionComponent,
+    ReserveComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +72,9 @@ const appRoutes:Routes=[
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule,
+    MatCheckboxModule
 
   ],
 

@@ -80,3 +80,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-size: 30px;
 }
 
+#miModal {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
