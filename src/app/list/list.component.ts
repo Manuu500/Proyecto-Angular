@@ -42,7 +42,6 @@ export class ListComponent {
   }
 
   anadir(){
-
     this.router.navigate(['add']);
   }
 

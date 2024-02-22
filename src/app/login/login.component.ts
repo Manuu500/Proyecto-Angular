@@ -10,40 +10,43 @@ import { UsuarioService } from '../services/usuario.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-
   private router: Router;
-  username: string = "";
-  password: string = "";
+  email: string = '';
+  password: string = '';
   private user!: UsuarioService;
+  error!: string;
 
 
-
-  constructor(private routerp:Router, private formBuilder:FormBuilder) {
-    this.router=routerp;
-
+  constructor(private routerp: Router, private formBuilder: FormBuilder, private cn: UsuarioService) {
+    this.router = routerp;
   }
 
   //This method makes the program go back to the main page
-  volver(){
+  volver() {
     this.router.navigate(['']);
   }
 
   //This method makes the possibility to log the user into the page
-  // login(){
-  //   if(this.username === "" || this.password === "" ){
-  //     console.log("Hay algún campo vacío");
+  // login() {
+  //   if (this.email == '' || this.password == '') {
+  //     this.error = 'No debes dejar ningún campo vacío';
   //   } else {
-  //     var usuarioLogueado: login;
-  //     usuarioLogueado = {
-  //       username: this.username,
-  //       password: this.password,
-  //   };
-
-  //   let usuarioLogueado = this.connectService.loginUsuario(loggedUser);
-
+  //     this.cn
+  //       .authUserLogin(this.email, this.password)
+  //       .subscribe(() => {
+  //         var response: Answer = result;
+  //         console.log(response.result);
+  //         if (response.result == 'success') {
+  //           const token = result.tokken;
+  //           this.cookieService.set('jwt', token, 7);
+  //           window.location.reload();
+  //         } else {
+  //           this.error = response.result;
+  //         }
+  //       });
   //   }
   // }
 }

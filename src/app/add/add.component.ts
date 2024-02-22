@@ -41,9 +41,9 @@ export class AddComponent {
       const chocobolloData: Chocobollo = {
         id: this.id, // O el valor que corresponda para la creación de un nuevo registro
         id_usu: this.id_usu,
-        id_ingre: this.id_ingre,
         nombre: this.chocobolloForm.value.nombre,
-        tipo: this.chocobolloForm.value.tipo
+        tipo: this.chocobolloForm.value.tipo,
+        ingredientes: []
       };
 
       this.insertbollo.insertBollo(chocobolloData).subscribe(() => {

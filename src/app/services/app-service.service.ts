@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpClientModule, HttpResponse } from '@angula
 import { Injectable } from '@angular/core';
 import { Chocobollo } from '../model/chocobollo';
 import { Observable } from 'rxjs';
+import { Ingrediente } from '../model/ingrediente';
 
 const httpOptions={
   headers:new HttpHeaders({'Content-Type':'application/json',}),
@@ -24,8 +25,12 @@ export class AppServiceService {
   listarChocobollo(): Observable<Chocobollo[]>{
     this.url=`http://localhost:8080/chocobollo/listarbollos`;
      return this.http.get<Chocobollo[]>(this.url);
-   }
+  }
 
+  listarIngrediente(): Observable<Ingrediente[]>{
+    this.url=`http://localhost:8080/ingrediente/listingredientes`;
+     return this.http.get<Ingrediente[]>(this.url);
+  }
 
   //This method connects the angular framework with bootstrap in order to update the selected chocobollo.
   updateBollo(chocobollo: Chocobollo): Observable<Chocobollo> {
