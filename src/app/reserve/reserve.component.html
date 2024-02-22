@@ -27,7 +27,9 @@
           <div class="row align-items-center">
             <label class="col-sm-3 text-center">Ingredientes:</label>
             <div *ngFor="let ig of ingrediente">
-              <mat-checkbox formControlName="ingredientes" name="{{ ig.id }}">{{ ig.nombre }}</mat-checkbox>
+              <mat-checkbox (change)="onIngredientChange(ig.id)" [checked]="ingredientesFormArray.value.includes(ig.id)">
+                {{ ig.nombre }}
+              </mat-checkbox>
             </div>
           </div>
           <div class="row align-items-center d-flex justify-content-center">

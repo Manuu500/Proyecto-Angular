@@ -1,6 +1,6 @@
 import { Ingrediente } from './../model/ingrediente';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppServiceService } from '../services/app-service.service';
 import { Chocobollo } from '../model/chocobollo';
@@ -8,15 +8,14 @@ import { Chocobollo } from '../model/chocobollo';
 @Component({
   selector: 'app-tu-componente',
   template: `
-    <mat-form-field class="col-sm-9">
-      <div *ngFor="let checkbox of checkboxOptions">
-        <mat-checkbox
-          [(ngModel)]="checkbox.checked"
-          name="{{ checkbox.name }}"
-          >{{ checkbox.label }}</mat-checkbox
-        >
-      </div>
-    </mat-form-field>
+    <div *ngFor="let ig of ingrediente">
+      <mat-checkbox
+        (change)="onIngredientChange(ig.id)"
+        [checked]="ingredientesFormArray.value.includes(ig.id)"
+      >
+        {{ ig.nombre }}
+      </mat-checkbox>
+    </div>
   `,
   templateUrl: './reserve.component.html',
   styleUrls: ['./reserve.component.css'],
@@ -41,7 +40,7 @@ export class ReserveComponent {
     this.chocobolloForm = this.fb.group({
       nombre: ['', Validators.required],
       tipo: ['', Validators.required],
-      ingredientes: [[], Validators.required],
+      ingredientes: this.fb.array([], Validators.required),
     });
   }
 
@@ -52,7 +51,11 @@ export class ReserveComponent {
 
   ngOnInit(): void {
     this.listarIngredientes();
-    this.chocobolloForm.addControl('ingredientes', new FormControl([]));
+    this.chocobolloForm = this.fb.group({
+      nombre: ['', Validators.required],
+      tipo: ['', Validators.required],
+      ingredientes: this.fb.array([]), // Ensure to initialize with an empty array
+    });
   }
 
   listarIngredientes() {
@@ -76,7 +79,7 @@ export class ReserveComponent {
         ? ingredientesValue.map((ingId: number) => {
             const ing = this.ingrediente.find((item) => item.id === ingId);
             return {
-              id: ing?.id || 0, // Provide a default value if 'id' can be undefined
+              id: ing?.id || 0,
               nombre: ing?.nombre || '',
               cantidad: ing?.cantidad || '',
             };
@@ -113,4 +116,16 @@ export class ReserveComponent {
     }
   }
 
+  get ingredientesFormArray() {
+    return this.chocobolloForm.get('ingredientes') as FormArray;
+  }
+
+  onIngredientChange(ingId: number) {
+    const index = this.ingredientesFormArray.value.indexOf(ingId);
+    if (index === -1) {
+      this.ingredientesFormArray.push(this.fb.control(ingId));
+    } else {
+      this.ingredientesFormArray.removeAt(index);
+    }
+  }
 }
