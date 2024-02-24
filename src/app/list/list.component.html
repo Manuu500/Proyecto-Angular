@@ -11,22 +11,35 @@
           <tr>
             <td class="p-3 text-center table-tittle" style="min-width: 264px;">Nombre</td> <!-- Establece un ancho mínimo para cada celda -->
             <td class="p-3 text-center table-tittle" style="min-width: 264px;">Tipo</td>
+            <td class="p-3 text-center table-tittle" style="min-width: 264px;">Ingredientes</td>
             <td colspan="2" class="text-center table-tittle">Operaciones</td>
           </tr>
           <tr *ngFor="let bollo of chocobollo">
-            <td class="align-text table-text" style="min-width: 200px;">{{bollo.nombre}}</td>
-            <td class="align-text table-text" style="min-width: 264px;">{{bollo.tipo}}</td>
+            <td class="align-text table-text" style="min-width: 200px;">{{ bollo.nombre }}</td>
+            <td class="align-text table-text" style="min-width: 264px;">{{ bollo.tipo }}</td>
+            <td>
+              <ng-container *ngIf="bollo.ingredientes && bollo.ingredientes.length > 0; else noIngredients">
+                  <div *ngFor="let ingrediente of bollo.ingredientes">
+                      {{ ingrediente }}
+                  </div>
+              </ng-container>
+              <ng-template #noIngredients>
+                  No hay ingredientes
+              </ng-template>
+          </td>
+            <!-- Additional columns or actions if needed -->
+
             <td style="min-width: 264px;">
               <div class="align-buttons">
                 <button (click)="editar(bollo.id, bollo.nombre, bollo.tipo)" mat-raised-button class="btn-sm m-2">Editar</button>
               </div>
             </td>
-            <td style="min-width: 264px;">
-              <div class="align-buttons">
-                <button (click)="confirmacionModal(bollo.id)" mat-raised-button class="btn-sm m-2" style="background-color: red;">Borrar</button>
-              </div>
+            <td>
+                <div class="align-buttons">
+                    <button (click)="confirmacionModal(bollo.id)" mat-raised-button class="btn-sm m-2" style="background-color: red;">Borrar</button>
+                </div>
             </td>
-          </tr>
+        </tr>
         </table>
       </div>
     </form>
@@ -46,3 +59,9 @@
 </div>
 
 
+
+<!-- <td style="min-width: 264px;">
+              <div class="align-buttons">
+                <button (click)="editar(bollo.id, bollo.nombre, bollo.tipo)" mat-raised-button class="btn-sm m-2">Editar</button>
+              </div>
+            </td> -->

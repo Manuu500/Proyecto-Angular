@@ -29,6 +29,7 @@ export class ReserveComponent {
   id_usu!: number;
   id_ingre!: number;
 
+
   constructor(
     private routerp: Router,
     private formBuilder: FormBuilder,
@@ -62,7 +63,7 @@ export class ReserveComponent {
     this.apiservice.listarIngrediente().subscribe(
       (listaIngredientes) => {
         this.ingrediente = listaIngredientes;
-        console.log(listaIngredientes);
+        //console.log(listaIngredientes);
       },
       (error) => {
         console.error('Error al obtener la lista de ingredientes:', error);
@@ -78,6 +79,7 @@ export class ReserveComponent {
       const selectedIngredientes: Ingrediente[] = Array.isArray(ingredientesValue)
         ? ingredientesValue.map((ingId: number) => {
             const ing = this.ingrediente.find((item) => item.id === ingId);
+
             return {
               id: ing?.id || 0,
               nombre: ing?.nombre || '',
@@ -86,16 +88,18 @@ export class ReserveComponent {
           })
         : [];
 
+      // Assign values to id and id_usu
       const chocobolloData: Chocobollo = {
-        id: this.id,
-        id_usu: this.id_usu,
+        id: this.id || 0, // Set a default value if this.id is undefined
+        id_usu: this.id_usu || 0, // Set a default value if this.id_usu is undefined
         nombre: this.chocobolloForm.value.nombre,
         tipo: this.chocobolloForm.value.tipo,
-        ingredientes: selectedIngredientes,
+        ingredientes: selectedIngredientes
       };
 
-      console.log('Ingredientes seleccionados:', selectedIngredientes);
       console.log('ChocobolloData:', chocobolloData);
+
+      console.log('Ingredientes seleccionados:', selectedIngredientes);
 
       this.apiservice
         .insertBollo(chocobolloData)
@@ -128,4 +132,9 @@ export class ReserveComponent {
       this.ingredientesFormArray.removeAt(index);
     }
   }
+
+
+
 }
+
+//console.log('Ingredientes seleccionados:', selectedIngredientes);

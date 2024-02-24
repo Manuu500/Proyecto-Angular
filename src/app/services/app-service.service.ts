@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Chocobollo } from '../model/chocobollo';
 import { Observable } from 'rxjs';
 import { Ingrediente } from '../model/ingrediente';
+import { DTO } from '../DTO';
 
 const httpOptions={
   headers:new HttpHeaders({'Content-Type':'application/json',}),
@@ -17,14 +18,16 @@ const httpOptions={
 
 export class AppServiceService {
 
+
+  private apiUrl="http://localhost:8080/chocobollo/insertarbolloJSON";
   private url="";
 
   constructor(private http:HttpClient) { }
 
   //This method connects the angular framework (front) with the bootstrap (back) in order to list all the chocobollos of the database
-  listarChocobollo(): Observable<Chocobollo[]>{
-    this.url=`http://localhost:8080/chocobollo/listarbollos`;
-     return this.http.get<Chocobollo[]>(this.url);
+  listarChocobollo(): Observable<Chocobollo[]> {
+    this.url = `http://localhost:8080/chocobollo/listarbollos`;
+    return this.http.get<Chocobollo[]>(this.url);
   }
 
   listarIngrediente(): Observable<Ingrediente[]>{
@@ -44,9 +47,15 @@ export class AppServiceService {
     return this.http.delete<HttpResponse<any>>(url, httpOptions);
   }
 
-  insertBollo(chocobollo:Chocobollo): Observable<Chocobollo> {
-    const url = `http://localhost:8080/chocobollo/insertarbollo/${chocobollo.nombre}/${chocobollo.tipo}`;
-    return this.http.post<Chocobollo>(url, httpOptions);
+  insertBollo(chocobollo: Chocobollo): Observable<Chocobollo> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+
+    return this.http.post<Chocobollo>(this.apiUrl, chocobollo, httpOptions);
   }
+
 
 }

@@ -7,6 +7,8 @@ import { HttpResponse } from '@angular/common/http';
 import { ApiService } from '../services/listartodos.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ModalConfirmacionComponent } from '../modalconfirmacion/modalconfirmacion.component';
+import { DTO } from '../DTO';
+import { Ingrediente } from '../model/ingrediente';
 
 
 
@@ -64,10 +66,23 @@ export class ListComponent {
     this.listarChocobollos();
   }
 
-  listarChocobollos(){
-    this.listarbollos.listarChocobollo().subscribe(chocobollo=>{
-      (this.chocobollo=chocobollo);console.log(chocobollo)});
-  }
+  listarChocobollos() {
+    this.listarbollos.listarChocobollo().subscribe(
+        (chocobollo: Chocobollo[] | string) => {
+            if (typeof chocobollo === 'string') {
+                console.log('Error:', chocobollo);
+                // Handle the error message if needed
+            } else {
+                console.log('Chocobollos:', chocobollo);
+                this.chocobollo = chocobollo;
+            }
+        },
+        (error) => {
+            console.error('Error al listar chocobollos:', error);
+            // Handle the error if needed
+        }
+    );
+}
 
   borrar(id: number) {
 
@@ -81,4 +96,18 @@ export class ListComponent {
       }
     );
   }
+
+  getIngredientesString(chocobollo: Chocobollo | DTO): string {
+    console.log('Chocobollo:', chocobollo);
+
+    if (!chocobollo || !chocobollo.ingredientes || chocobollo.ingredientes.length === 0) {
+        console.log('No hay ingredientes');
+        return 'No hay ingredientes';
+    }
+
+    const ingredients = chocobollo.ingredientes.map(ingrediente => ingrediente.nombre).join(', ');
+    console.log('Ingredients:', ingredients);
+
+    return ingredients.length > 0 ? ingredients : 'No hay ingredientes';
+}
 }

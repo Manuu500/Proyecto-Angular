@@ -5,6 +5,6 @@ export interface Chocobollo {
   id_usu: number;
   nombre: string;
   tipo: string;
-  ingredientes: Ingrediente[]; // Now expects an array of Ingrediente
+  ingredientes: Ingrediente[];  // Usar un array en lugar de un conjunto
 
 }
