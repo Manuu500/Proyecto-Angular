@@ -29,6 +29,7 @@ import { EditComponent } from './edit/edit.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalConfirmacionComponent } from './modalconfirmacion/modalconfirmacion.component';
 import { ReserveComponent } from './reserve/reserve.component';
+import { ModalRegistroComponent } from './modal-registro/modal-registro.component';
 
 
 const appRoutes:Routes=[
@@ -56,7 +57,8 @@ const appRoutes:Routes=[
     AddComponent,
     EditComponent,
     ModalConfirmacionComponent,
-    ReserveComponent
+    ReserveComponent,
+    ModalRegistroComponent
   ],
   imports: [
     BrowserModule,

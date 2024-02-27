@@ -4,6 +4,7 @@ import { Chocobollo } from '../model/chocobollo';
 import { Observable } from 'rxjs';
 import { Ingrediente } from '../model/ingrediente';
 import { DTO } from '../DTO';
+import { Usuario } from '../model/usuario';
 
 const httpOptions={
   headers:new HttpHeaders({'Content-Type':'application/json',}),
@@ -57,5 +58,18 @@ export class AppServiceService {
     return this.http.post<Chocobollo>(this.apiUrl, chocobollo, httpOptions);
   }
 
+  insertUsuario(usuario: Usuario): Observable<Usuario> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
 
+    return this.http.post<Usuario>("http://localhost:8080/usuario/insertarusuarioJSON", usuario, httpOptions);
+  }
+
+  getNextBolloId(): Observable<number> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get<number>('http://localhost:8080/chocobollo/getBolloID', { headers });
+  }
 }

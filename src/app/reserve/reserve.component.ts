@@ -29,7 +29,6 @@ export class ReserveComponent {
   id_usu!: number;
   id_ingre!: number;
 
-
   constructor(
     private routerp: Router,
     private formBuilder: FormBuilder,
@@ -55,8 +54,10 @@ export class ReserveComponent {
     this.chocobolloForm = this.fb.group({
       nombre: ['', Validators.required],
       tipo: ['', Validators.required],
-      ingredientes: this.fb.array([]), // Ensure to initialize with an empty array
+      ingredientes: this.fb.array([]),
     });
+
+    console.log('Form initialized:', this.chocobolloForm.value);
   }
 
   listarIngredientes() {
@@ -75,66 +76,86 @@ export class ReserveComponent {
     if (!this.addingChocobollo && this.chocobolloForm.valid) {
       this.addingChocobollo = true;
 
-      const ingredientesValue = this.chocobolloForm.value.ingredientes;
-      const selectedIngredientes: Ingrediente[] = Array.isArray(ingredientesValue)
-        ? ingredientesValue.map((ingId: number) => {
-            const ing = this.ingrediente.find((item) => item.id === ingId);
+      // Call a service method to get the next available ID
+      this.apiservice.getNextBolloId().subscribe(
+        (nextId: number) => {
+          const ingredientesValue = this.chocobolloForm.value.ingredientes;
+          const selectedIngredientes: Ingrediente[] = Array.isArray(
+            ingredientesValue
+          )
+            ? ingredientesValue.map((ingId: number) => {
+                const ing = this.ingrediente.find((item) => item.id === ingId);
 
-            return {
-              id: ing?.id || 0,
-              nombre: ing?.nombre || '',
-              cantidad: ing?.cantidad || '',
-            };
-          })
-        : [];
+                return {
+                  id: ing?.id || 0,
+                  nombre: ing?.nombre || '',
+                  cantidad: ing?.cantidad || '',
+                };
+              })
+              .filter((ingrediente) => ingrediente.id !== null) // Filter out unselected ingredients
+            : [];
 
-      // Assign values to id and id_usu
-      const chocobolloData: Chocobollo = {
-        id: this.id || 0, // Set a default value if this.id is undefined
-        id_usu: this.id_usu || 0, // Set a default value if this.id_usu is undefined
-        nombre: this.chocobolloForm.value.nombre,
-        tipo: this.chocobolloForm.value.tipo,
-        ingredientes: selectedIngredientes
-      };
+          // Assign values to id and id_usu using the fetched nextId
+          const chocobolloData: Chocobollo = {
+            id: nextId, // Use the fetched nextId
+            id_usu: this.id_usu || 0,
+            nombre: this.chocobolloForm.value.nombre,
+            tipo: this.chocobolloForm.value.tipo,
+            ingredientes: selectedIngredientes, // Assign selectedIngredientes
+          };
 
-      console.log('ChocobolloData:', chocobolloData);
+          console.log('ChocobolloData:', chocobolloData);
+          console.log('Ingredientes seleccionados:', selectedIngredientes);
 
-      console.log('Ingredientes seleccionados:', selectedIngredientes);
-
-      this.apiservice
-        .insertBollo(chocobolloData)
-        .subscribe(
-          () => {
-            console.log('Chocobollo inserted successfully');
-            this.router.navigate(['list']);
-          },
-          (error) => {
-            console.error('Error inserting Chocobollo', error);
-          }
-        )
-        .add(() => {
+          // Insert the Chocobollo with the fetched nextId
+          this.apiservice
+            .insertBollo(chocobolloData)
+            .subscribe(
+              () => {
+                console.log('Chocobollo inserted successfully');
+                this.router.navigate(['list']);
+              },
+              (error) => {
+                console.error('Error inserting Chocobollo', error);
+              }
+            )
+            .add(() => {
+              this.addingChocobollo = false;
+            });
+        },
+        (error) => {
+          console.error('Error fetching next Chocobollo ID', error);
           this.addingChocobollo = false;
-        });
+        }
+      );
     } else {
       console.log('Form is not valid or operation in progress');
     }
   }
 
+
+  onIngredientChange(ingredientId: number) {
+    const ingredientesFormArray = this.chocobolloForm.get('ingredientes') as FormArray;
+
+    if (!ingredientesFormArray) {
+      console.error('FormArray not found');
+      return;
+    }
+
+    const isChecked = ingredientesFormArray.value.includes(ingredientId);
+
+    if (isChecked) {
+      console.log(`Ingredient with ID ${ingredientId} deselected`);
+      const index = ingredientesFormArray.controls.findIndex((control) => control.value === ingredientId);
+      ingredientesFormArray.removeAt(index); // Eliminar del array de ingredientes
+    } else {
+      console.log(`Ingredient with ID ${ingredientId} selected`);
+      ingredientesFormArray.push(new FormControl(ingredientId)); // Agregar al array de ingredientes
+    }
+  }
   get ingredientesFormArray() {
     return this.chocobolloForm.get('ingredientes') as FormArray;
   }
-
-  onIngredientChange(ingId: number) {
-    const index = this.ingredientesFormArray.value.indexOf(ingId);
-    if (index === -1) {
-      this.ingredientesFormArray.push(this.fb.control(ingId));
-    } else {
-      this.ingredientesFormArray.removeAt(index);
-    }
-  }
-
-
-
 }
 
 //console.log('Ingredientes seleccionados:', selectedIngredientes);

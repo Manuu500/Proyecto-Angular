@@ -2,7 +2,7 @@ export interface Usuario {
   id: number;
   id_bollo: number;
   nombre: string;
-  apellido: string;
+  apellidos: string;
   email: string;
   contraseña: string;
 }

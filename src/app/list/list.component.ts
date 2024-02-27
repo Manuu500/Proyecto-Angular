@@ -56,7 +56,6 @@ export class ListComponent {
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
-        // El usuario confirmó la eliminación, puedes llamar a tu función de borrar aquí
         this.borrar(id);
       }
     });

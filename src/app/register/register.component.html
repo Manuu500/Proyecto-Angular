@@ -5,6 +5,7 @@
   <div class="col">
     <div class="row"></div>
     <div class="row align-items-center d-flex justify-content-center">
+      <form [formGroup]="usuForm" (ngSubmit)="addUsu()">
       <mat-card>
         <mat-card-content class="text-center">
           <h2>REGISTRO DE USUARIOS</h2>
@@ -14,33 +15,34 @@
           <div class="row align-items-center">
             <label class="col-sm-3 text-center">Nombre:</label>
             <mat-form-field class="col-sm-9">
-              <input matInput class="form-control">
+              <input matInput formControlName="nombre" class="form-control">
             </mat-form-field>
           </div>
           <div class="row align-items-center">
             <label class="col-sm-3 text-center">Apellidos:</label>
             <mat-form-field class="col-sm-9">
-              <input matInput class="form-control">
+              <input matInput formControlName="apellidos" class="form-control">
             </mat-form-field>
           </div>
           <div class="row align-items-center">
             <label class="col-sm-3 text-center">Email:</label>
             <mat-form-field class="col-sm-9">
-              <input matInput class="form-control">
+              <input matInput formControlName="email" class="form-control">
             </mat-form-field>
           </div>
           <div class="row align-items-center">
             <label class="col-sm-3 text-center">Contraseña:</label>
             <mat-form-field class="col-sm-9">
-              <input matInput class="form-control">
+              <input matInput formControlName="contraseña" class="form-control">
             </mat-form-field>
           </div>
           <div class="row align-items-center d-flex justify-content-center">
-            <button mat-raised-button color="accent" class="m-3">Registrarse</button>
+            <button [disabled]="usuForm.invalid" (click)="addUsu()" mat-raised-button color="accent" class="m-3">Registrarse</button>
             <button (click)="index()" mat-raised-button class="m-3">Volver</button>
           </div>
         </div>
       </mat-card>
+    </form>
     </div>
     <div class="row"></div>
   </div>

@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-index',
@@ -10,7 +11,7 @@ export class IndexComponent {
 
   private router: Router;
 
-  constructor(protected routerp:Router) {
+  constructor(protected routerp:Router, private dialog: MatDialog) {
     this.router=routerp;
   }
 
@@ -21,4 +22,9 @@ export class IndexComponent {
   reservaChocobollo(){
     this.router.navigate(['reserve']);
   }
+
+  ngOnInit(){
+  }
+
+
 }

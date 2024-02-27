@@ -7,6 +7,7 @@ import { Usuario } from '../model/usuario';
   providedIn: 'root'
 })
 export class UsuarioService {
+  dialog: any;
 
   constructor(private http: HttpClient) { }
 
@@ -38,7 +39,7 @@ export class UsuarioService {
   public insertUser(usu: Usuario) {
     let user = {
       nombreUsu: usu.nombre,
-      apellUsu: usu.apellido,
+      apellUsu: usu.apellidos,
       idBollo: usu.id_bollo,
       email: usu.email,
       contraseña: usu.contraseña
@@ -46,5 +47,4 @@ export class UsuarioService {
 
     let url = "http://localhost:8080/chocobollo/insertUser"
   }
-
 }
