@@ -20,7 +20,6 @@ const httpOptions={
 export class AppServiceService {
 
 
-  private apiUrl="http://localhost:8080/chocobollo/insertarbolloJSON";
   private url="";
 
   constructor(private http:HttpClient) { }
@@ -48,15 +47,17 @@ export class AppServiceService {
     return this.http.delete<HttpResponse<any>>(url, httpOptions);
   }
 
-  insertBollo(chocobollo: Chocobollo): Observable<Chocobollo> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-    };
 
-    return this.http.post<Chocobollo>(this.apiUrl, chocobollo, httpOptions);
-  }
+
+   insertBollo(chocobollo: Chocobollo): Observable<Chocobollo> {
+     const httpOptions = {
+       headers: new HttpHeaders({
+         'Content-Type': 'application/json',
+       }),
+     };
+     console.log(chocobollo);
+     return this.http.post<Chocobollo>("http://localhost:8080/chocobollo/insertarbolloJSON", chocobollo, httpOptions);
+   }
 
   insertUsuario(usuario: Usuario): Observable<Usuario> {
     const httpOptions = {

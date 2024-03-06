@@ -80,9 +80,7 @@ export class ReserveComponent {
       this.apiservice.getNextBolloId().subscribe(
         (nextId: number) => {
           const ingredientesValue = this.chocobolloForm.value.ingredientes;
-          const selectedIngredientes: Ingrediente[] = Array.isArray(
-            ingredientesValue
-          )
+          const selectedIngredientes: Ingrediente[] = Array.isArray(ingredientesValue)
             ? ingredientesValue.map((ingId: number) => {
                 const ing = this.ingrediente.find((item) => item.id === ingId);
 

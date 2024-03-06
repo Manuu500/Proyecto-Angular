@@ -72,7 +72,7 @@ export class ListComponent {
                 console.log('Error:', chocobollo);
                 // Handle the error message if needed
             } else {
-                console.log('Chocobollos:', chocobollo);
+                //console.log('Chocobollos:', chocobollo);
                 this.chocobollo = chocobollo;
             }
         },
